@@ -1,3 +1,2 @@
-/assets/*
- Access-Control-Allow-Origin: *
- Content-Type: text/javascript
+/*
+  Content-Type: application/javascript

@@ -1,22 +1,23 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { createHtmlPlugin } from 'vite-plugin-html'; // Correct import
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: './',
+  plugins: [
+    react(),
+    createHtmlPlugin({
+      minify: true,
+      inject: {
+        injectData: {
+          script: { crossorigin: false },
+          link: { crossorigin: false },
+        },
+      },
+    }),
+  ],
+  base: './', 
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
-  },
-  server: {
-    headers: {
-      'Cache-Control': 'no-cache',
-    },
-  },
-  preview: {
-    headers: {
-      'Cache-Control': 'no-cache',
-    },
+    assetsDir: 'assets',
   },
 });
