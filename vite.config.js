@@ -4,9 +4,15 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './',
+  server: {
+    headers: {
+      'Cache-Control': 'no-cache'
+    }
+  },
   preview: {
     headers: {
-      'Content-Type': 'application/javascript; charset=utf-8'
+      'Cache-Control': 'no-cache'
     }
   }
 })
